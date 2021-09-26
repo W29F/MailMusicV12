@@ -384,7 +384,7 @@ async def m_cb(b, cb):
             await cb.answer("Chat is not connected or already playng", show_alert=True)
         )
     elif type_ == "puse":
-          (
+        (
             await cb.answer("Music Paused!")
         ) if (
             callsmusic.pause(chet_id)
@@ -557,7 +557,7 @@ async def play(_, message: Message):
         urls = [entity for entity in entities if entity.type == 'url']
         text_links = [
             entity for entity in entities if entity.type == 'text_link'
-        ]in entities if entity.type == "text_link"]
+        ]
     else:
         urls = None
     if text_links:
