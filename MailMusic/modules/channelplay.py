@@ -225,17 +225,18 @@ async def m_cb(b, cb):
 
     the_data = cb.message.reply_markup.inline_keyboard[1][0].callback_data
     if type_ == "cpause":
-            (
+        (
             await cb.answer("Music Paused!")
         ) if (
             callsmusic.pause(chet_id)
         ) else (
             await cb.answer("Chat is not connected!", show_alert=True)
         )
-            await cb.message.edit(updated_stats(conv, qeue), reply_markup=r_ply("play"))
-
+            await cb.message.edit(
+                updated_stats(conv, qeue), reply_markup=r_ply("play")
+            )
     elif type_ == "cplay":
-            (
+        (
             await cb.answer("Music Resumed!")
         ) if (
             callsmusic.resume(chet_id)
@@ -342,7 +343,7 @@ async def m_cb(b, cb):
             
     elif type_ == "cmute":
               result = callsmusic.mute(chet_id)
-              (
+            (
               await cb.message.edit("Successfully Muted")
             ) if (
               result == 0
@@ -356,7 +357,7 @@ async def m_cb(b, cb):
         
     elif type_ == "cunmute":
               result = callsmusic.unmute(chet_id)
-              (
+            (
               await cb.message.edit("Successfully unmuted")
             ) if (
               result == 0
@@ -451,15 +452,15 @@ async def play(_, message: Message):
                 entities = message.reply_to_message.entities + entities
             elif message.reply_to_message.caption_entities:
                 entities = message.reply_to_message.entities + entities
-   else:
+        else:
             text = message.text or message.caption
-
+            
         urls = [entity for entity in entities if entity.type == 'url']
         text_links = [
             entity for entity in entities if entity.type == 'text_link'
         ]
 
-else:
+    else:
         urls = None
     if text_links:
         urls = True
@@ -480,7 +481,6 @@ else:
         if round(audio.duration / 60) > DURATION_LIMIT:
             await lel.edit(
                 f"❌ Videos longer than {DURATION_LIMIT} minute(s) aren't allowed to play!"
-            )
         keyboard = InlineKeyboardMarkup(
             [
                 [
