@@ -41,7 +41,7 @@ async def pause(_, message: Message):
         await message.reply("Is chat even linked")
         return
     chat_id = chid
-         (
+    (
         await message.reply_text("▶️ Paused!")
     ) if (
         callsmusic.pause(chat_id)
@@ -64,7 +64,7 @@ async def resume(_, message: Message):
         await message.reply("Is chat even linked")
         return
     chat_id = chid
-      (
+    (
        await message.reply_text("⏸ Resumed!")
     ) if (
         callsmusic.resume(chat_id)
