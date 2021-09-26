@@ -117,15 +117,17 @@ async def skip(_, message: Message):
 async def mute(_, message: Message):
     chat_id = get_chat_id(message.chat)
     result = callsmusic.mute(chat_id)
+    (
         await message.reply_text("✅ Muted")
-      if:
+    ) if (
         result == 0
-      else:
+    ) else (
         await message.reply_text("❌ Already muted")
-      if:
+    ) if (
         result == 1
-      else:
+    ) else (
         await message.reply_text("❌ Not in call")
+    )
 
         
 @Client.on_message(command('unmute') & other_filters)
@@ -134,15 +136,17 @@ async def mute(_, message: Message):
 async def unmute(_, message: Message):
     chat_id = get_chat_id(message.chat)
     result = callsmusic.unmute(chat_id)
+    (
         await message.reply_text("✅ Unmuted")
-      if:
+    ) if (
         result == 0
-      else:
+    ) else (
         await message.reply_text("❌ Not muted")
-      if:
+    ) if (
         result == 1
-      else:
+    ) else (
         await message.reply_text("❌ Not in call")
+    )
 
 
 @Client.on_message(filters.command("admincache"))
